@@ -1,5 +1,6 @@
-package net.bounceme.dur.selenium.jpa;
+package net.bounceme.dur.selenium.jpa.controllers;
 
+import net.bounceme.dur.selenium.jpa.entities.Page;
 import net.bounceme.dur.selenium.jpa.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;

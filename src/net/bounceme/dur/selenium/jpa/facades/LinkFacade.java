@@ -1,5 +1,6 @@
-package net.bounceme.dur.selenium.jpa;
+package net.bounceme.dur.selenium.jpa.facades;
 
+import net.bounceme.dur.selenium.jpa.entities.Link;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

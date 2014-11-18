@@ -1,4 +1,4 @@
-package net.bounceme.dur.selenium.jpa;
+package net.bounceme.dur.selenium.jpa.facades;
 
 import java.util.List;
 import java.util.logging.Logger;
