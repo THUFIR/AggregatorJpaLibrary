@@ -1,0 +1,4 @@
+AggregatorJpaLibrary
+====================
+
+jpa crud ops
