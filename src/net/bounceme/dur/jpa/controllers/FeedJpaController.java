@@ -1,20 +1,29 @@
-package net.bounceme.dur.selenium.jpa.controllers;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package net.bounceme.dur.jpa.controllers;
 
-import net.bounceme.dur.selenium.jpa.entities.Feed;
-import net.bounceme.dur.selenium.jpa.entities.Link;
+import net.bounceme.dur.jpa.entities.Feed;
+import net.bounceme.dur.jpa.entities.Link;
+import net.bounceme.dur.jpa.exceptions.IllegalOrphanException;
+import net.bounceme.dur.jpa.exceptions.NonexistentEntityException;
 import java.io.Serializable;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import net.bounceme.dur.selenium.jpa.exceptions.IllegalOrphanException;
-import net.bounceme.dur.selenium.jpa.exceptions.NonexistentEntityException;
 
+/**
+ *
+ * @author thufir
+ */
 public class FeedJpaController implements Serializable {
 
     public FeedJpaController(EntityManagerFactory emf) {
@@ -34,7 +43,7 @@ public class FeedJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Collection<Link> attachedLinkCollection = new ArrayList<>();
+            Collection<Link> attachedLinkCollection = new ArrayList<Link>();
             for (Link linkCollectionLinkToAttach : feed.getLinkCollection()) {
                 linkCollectionLinkToAttach = em.getReference(linkCollectionLinkToAttach.getClass(), linkCollectionLinkToAttach.getId());
                 attachedLinkCollection.add(linkCollectionLinkToAttach);
@@ -58,7 +67,7 @@ public class FeedJpaController implements Serializable {
         }
     }
 
-    public void edit(Feed feed) throws NonexistentEntityException, Exception  {
+    public void edit(Feed feed) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -70,7 +79,7 @@ public class FeedJpaController implements Serializable {
             for (Link linkCollectionOldLink : linkCollectionOld) {
                 if (!linkCollectionNew.contains(linkCollectionOldLink)) {
                     if (illegalOrphanMessages == null) {
-                        illegalOrphanMessages = new ArrayList<>();
+                        illegalOrphanMessages = new ArrayList<String>();
                     }
                     illegalOrphanMessages.add("You must retain Link " + linkCollectionOldLink + " since its feedId field is not nullable.");
                 }
@@ -78,7 +87,7 @@ public class FeedJpaController implements Serializable {
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            Collection<Link> attachedLinkCollectionNew = new ArrayList<>();
+            Collection<Link> attachedLinkCollectionNew = new ArrayList<Link>();
             for (Link linkCollectionNewLinkToAttach : linkCollectionNew) {
                 linkCollectionNewLinkToAttach = em.getReference(linkCollectionNewLinkToAttach.getClass(), linkCollectionNewLinkToAttach.getId());
                 attachedLinkCollectionNew.add(linkCollectionNewLinkToAttach);
@@ -130,7 +139,7 @@ public class FeedJpaController implements Serializable {
             Collection<Link> linkCollectionOrphanCheck = feed.getLinkCollection();
             for (Link linkCollectionOrphanCheckLink : linkCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
-                    illegalOrphanMessages = new ArrayList<>();
+                    illegalOrphanMessages = new ArrayList<String>();
                 }
                 illegalOrphanMessages.add("This Feed (" + feed + ") cannot be destroyed since the Link " + linkCollectionOrphanCheckLink + " in its linkCollection field has a non-nullable feedId field.");
             }

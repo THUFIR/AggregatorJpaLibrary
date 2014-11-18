@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.bounceme.dur.selenium.jpa.entities;
+package net.bounceme.dur.jpa.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -134,7 +134,7 @@ public class Link implements Serializable {
 
     @Override
     public String toString() {
-        return "net.bounceme.dur.selenium.jpa.Link[ id=" + id + " ]";
+        return "dur.Link[ id=" + id + " ]";
     }
     
 }

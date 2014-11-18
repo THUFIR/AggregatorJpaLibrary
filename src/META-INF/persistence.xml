@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="SeleniumIteratorPU" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="AggregatorJpaLibraryPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>net.bounceme.dur.selenium.jpa.entities.Page</class>
-    <class>net.bounceme.dur.selenium.jpa.entities.Link</class>
-    <class>net.bounceme.dur.selenium.jpa.entities.Feed</class>
+    <class>net.bounceme.dur.jpa.controllers.entities.Feed</class>
+    <class>net.bounceme.dur.jpa.controllers.entities.Link</class>
+    <class>net.bounceme.dur.jpa.controllers.entities.Page</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/rome_aggregator?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="password"/>

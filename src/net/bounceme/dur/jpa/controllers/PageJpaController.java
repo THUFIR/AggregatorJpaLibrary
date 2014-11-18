@@ -1,7 +1,12 @@
-package net.bounceme.dur.selenium.jpa.controllers;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package net.bounceme.dur.jpa.controllers;
 
-import net.bounceme.dur.selenium.jpa.entities.Page;
-import net.bounceme.dur.selenium.jpa.exceptions.NonexistentEntityException;
+import net.bounceme.dur.jpa.entities.Page;
+import net.bounceme.dur.jpa.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -11,6 +16,10 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+/**
+ *
+ * @author thufir
+ */
 public class PageJpaController implements Serializable {
 
     public PageJpaController(EntityManagerFactory emf) {
@@ -20,20 +29,6 @@ public class PageJpaController implements Serializable {
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
-    }
-
-    public void persist(Page page) {
-        EntityManager em = null;
-        try {
-            em = getEntityManager();
-            em.getTransaction().begin();
-            em.persist(page);
-            em.getTransaction().commit();
-        } finally {
-            if (em != null) {
-                em.close();
-            }
-        }
     }
 
     public void create(Page page) {
@@ -139,5 +134,5 @@ public class PageJpaController implements Serializable {
             em.close();
         }
     }
-
+    
 }

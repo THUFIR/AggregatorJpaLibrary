@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.bounceme.dur.selenium.jpa.entities;
+package net.bounceme.dur.jpa.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -149,7 +149,7 @@ public class Feed implements Serializable {
 
     @Override
     public String toString() {
-        return "net.bounceme.dur.selenium.jpa.Feed[ id=" + id + " ]";
+        return "dur.Feed[ id=" + id + " ]";
     }
     
 }
