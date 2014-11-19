@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package net.bounceme.dur.jpa.controllers;
 
 import net.bounceme.dur.jpa.entities.Feed;
@@ -20,10 +15,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-/**
- *
- * @author thufir
- */
 public class FeedJpaController implements Serializable {
 
     public FeedJpaController(EntityManagerFactory emf) {

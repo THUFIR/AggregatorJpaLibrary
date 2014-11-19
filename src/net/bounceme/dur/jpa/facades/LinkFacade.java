@@ -40,8 +40,8 @@ public class LinkFacade {
         }
     }
 
-    public List<Link> findEntities(int maxResults, int firstResult) {
-        return controller.findLinkEntities(maxResults, firstResult);
+    public List<Link> findEntities() {
+        return controller.findLinkEntities();
     }
 
     public void findEntity(int id) {
