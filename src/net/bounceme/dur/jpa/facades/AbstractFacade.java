@@ -4,9 +4,6 @@ import java.util.List;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 
-
-
-
 public abstract class AbstractFacade<T> {
 
     private final static Logger log = Logger.getLogger(AbstractFacade.class.getName());
